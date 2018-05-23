@@ -1,0 +1,27 @@
+[user]
+	name = Shintaro Ikeda
+	email = ikenshirogivenup98@gmail.com
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	precomposeunicode = true
+	quotepath = false
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = simple
+[grep]
+	lineNumber = true
+[alias]
+	see = browse
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    tree = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[ghq]
+    root = ~/.ghq
+    root = ~/go/src # Replace your $GOPATH/src
