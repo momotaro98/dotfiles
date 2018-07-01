@@ -14,6 +14,7 @@ fi
 # Use virtual env in official Python
 
 # golang
+export PATH=$PATH:/usr/local/go/bin
 export GO15VENDOREXPERIMENT=1
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
