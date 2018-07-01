@@ -15,6 +15,7 @@
 	lineNumber = true
 [alias]
 	see = browse
+	st = status
     graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
     tree = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [filter "lfs"]
