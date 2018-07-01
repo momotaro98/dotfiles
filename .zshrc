@@ -28,6 +28,9 @@ fi
 # Qiita Username
 export QIITA_USERNAME=momotaro98
 
+# ghq alias
+alias gg='ghq get -u -p'
+
 # ghq peco hub aliases
 ## ref: https://qiita.com/itkrt2y/items/0671d1f48e66f21241e2
 alias gp='cd $(ghq root)/$(ghq list --full-path | grep -v $GOPATH | cut -d "/" -f 5,6,7 | peco)'
