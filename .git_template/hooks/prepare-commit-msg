@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ticket_number=$(git symbolic-ref --short HEAD | awk -F "_" '{print $NF}') # Branch name should be .*_50003
+# ticket_number is 50003
+if [ -n "$ticket_number" ]; then
+    sed -i.bak "1s/$/ #$ticket_number/" $1 # Add  #50003 into commit title
+    # [Note] MacOS requires to have a file after i option
+fi
