@@ -16,13 +16,16 @@
 [alias]
 	see = browse
 	st = status
-    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
-    tree = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	tree = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 [ghq]
-    root = ~/.ghq
-    root = ~/go/src # Replace your $GOPATH/src
+	root = ~/.ghq
+	root = ~/go/src # Replace your $GOPATH/src
+
+[init]
+	templatedir = ~/.git_template
