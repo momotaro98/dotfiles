@@ -5,6 +5,7 @@
 	editor = vim -c \"set fenc=utf-8\"
 	precomposeunicode = true
 	quotepath = false
+	excludesfile = ~/.gitignore_global
 [color]
 	diff = auto
 	status = auto
@@ -23,9 +24,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [ghq]
 	root = ~/.ghq
 	root = ~/go/src # Replace your $GOPATH/src
-
-[init]
-	templatedir = ~/.git_template
+[commit]
+	template = ~/.gitmessage.txt # commit template texts
