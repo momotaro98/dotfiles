@@ -1,7 +1,55 @@
  "------------------------------------------------------------
+ " Bundles preference
+ "------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+Plugin 'Shougo/neocomplete.vim' " 自動補完
+Plugin 'Shougo/neocomplcache' " cache
+Plugin 'Shougo/neosnippet' "スニペット機能
+Plugin 'Shougo/neosnippet-snippets' "スニペットのデータ
+Plugin 'majutsushi/tagbar.git' " 変数一覧、関数を表示
+Plugin 'scrooloose/nerdtree.git' " ファイラー
+Plugin 'othree/html5.vim'          " html5のタグのカラー
+Plugin 'bronson/vim-trailing-whitespace' "不要な空白(whitespace)に赤色を付ける
+Plugin 'jacoborus/tender.vim' " ColorScheme
+Plugin 'davidhalter/jedi-vim' " Python用
+Plugin 'fatih/vim-go' " Golang
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+ "------------------------------------------------------------
  " General preference
  "------------------------------------------------------------
- set clipboard=unnamed      " Vimの無名レジスタとOSのクリップボードを連携させる
+
+set clipboard=unnamed      " Vimの無名レジスタとOSのクリップボードを連携させる
  "set noswapfile           " スワップファイルをつくらない
 set nocompatible          " vi互換モードをオフ（vimの拡張機能を有効)
 set hidden                " 編集中でも、保存しないで他のファイルを開けるようにする
@@ -23,7 +71,8 @@ syntax enable " ハイライトを有効化
 syntax on     " ハイライトを有効化
 set t_Co=256
 set background=dark
-" colorscheme molokai
+colorscheme tender
+highlight Normal ctermbg=none
 
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>80v.\+/
@@ -314,43 +363,3 @@ endfunction
    " Required:
    set runtimepath+=~/.vim/bundle/neobundle.vim/
  endif
-
- " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
-
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
-
- " My Bundles here:
- " Refer to |:NeoBundle-examples|.
- " Note: You don't set neobundle setting in .gvimrc!
- NeoBundle 'Shougo/neocomplete.vim' " 自動補完
- NeoBundle 'Shougo/neocomplcache' " cache
- NeoBundle 'Shougo/neosnippet' "スニペット機能
- NeoBundle 'Shougo/neosnippet-snippets' "スニペットのデータ
- NeoBundle 'majutsushi/tagbar.git' " 変数一覧、関数を表示
- NeoBundle 'scrooloose/nerdtree.git' " ファイラー
- NeoBundle 'othree/html5.vim'          " html5のタグのカラー
- " NeoBundle 'zhaocai/GoldenView.Vim' " 複数時のウィンドウ幅を自動で調整
- NeoBundle 'bronson/vim-trailing-whitespace' "不要な空白(whitespace)に赤色を付ける
- NeoBundle 'tomasr/molokai' " ColorScheme
- NeoBundle 'davidhalter/jedi-vim' " Python用
- NeoBundle 'fatih/vim-go.git' "Golang用
- " NeoBundle 'kchmck/vim-coffee-script' " CoffeeScript用
-
- NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}} "JavaScript用
-
-
- call neobundle#end()
-
- " Required:
- filetype plugin indent on
-
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
-
-
- colorscheme molokai
- " highlight Normal ctermbg=none
