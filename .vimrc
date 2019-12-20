@@ -363,3 +363,9 @@ endfunction
    " Required:
    set runtimepath+=~/.vim/bundle/neobundle.vim/
  endif
+
+
+ "------------------------------------------------------------
+ " vim-go
+ "------------------------------------------------------------
+ let g:go_fmt_command = "goimports"
