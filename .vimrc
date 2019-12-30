@@ -159,6 +159,8 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.less setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 softtabstop=0 shiftwidth=2
+    autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=0 shiftwidth=2
+    autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=0 shiftwidth=2
 augroup END
 
  " MEMO
