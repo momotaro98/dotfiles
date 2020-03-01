@@ -28,6 +28,8 @@ Plugin 'bronson/vim-trailing-whitespace' "不要な空白(whitespace)に赤色�
 Plugin 'jacoborus/tender.vim' " ColorScheme
 Plugin 'davidhalter/jedi-vim' " Python用
 Plugin 'fatih/vim-go' " Golang
+Plugin 'po3rin/vim-gofmtmd' " Markdown go code
+let g:lsp_async_completion = 1 " For vim-gofmtmd
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
