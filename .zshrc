@@ -44,6 +44,9 @@ export QIITA_USERNAME=momotaro98
 export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
 
+# GitHub CLI
+eval "$(gh completion -s zsh)"
+
 # ghq peco hub aliases
 ## ref: https://qiita.com/itkrt2y/items/0671d1f48e66f21241e2
 alias gg='ghq get -u -p'
@@ -73,3 +76,6 @@ if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then source '$HOME/google-cloud
 
 ## The next line enables shell command completion for gcloud.
 if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then source '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `userpath` on 2020-08-17 06:41:30
+export PATH="$PATH:/Users/shintaro/.local/bin"
