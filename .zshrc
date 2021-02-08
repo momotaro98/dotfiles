@@ -58,8 +58,11 @@ alias hgp='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias up='docker-compose down; docker-compose build; docker-compose up'
 alias down='docker-compose down'
 
-# circle-ci local
+# Others
+## circle-ci local
 alias ci='circleci build .circleci/config.yml'
+## panic parse https://github.com/maruel/panicparse#if-you-have-usrbinpp-installed
+alias panicparse='$GOPATH/bin/pp'
 
 # hub alias
 function git(){hub "$@"}
