@@ -155,6 +155,7 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.cs setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=0 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.less setlocal tabstop=2 softtabstop=0 shiftwidth=2
     autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=0 shiftwidth=2
