@@ -16,18 +16,51 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'Shougo/neocomplete.vim' " 自動補完
-Plugin 'Shougo/neocomplcache' " cache
-Plugin 'Shougo/neosnippet' "スニペット機能
-Plugin 'Shougo/neosnippet-snippets' "スニペットのデータ
-Plugin 'majutsushi/tagbar.git' " 変数一覧、関数を表示
-Plugin 'scrooloose/nerdtree.git' " ファイラー
-Plugin 'othree/html5.vim'          " html5のタグのカラー
-Plugin 'bronson/vim-trailing-whitespace' "不要な空白(whitespace)に赤色を付ける
-Plugin 'jacoborus/tender.vim' " ColorScheme
-Plugin 'davidhalter/jedi-vim' " Python用
-Plugin 'fatih/vim-go' " Golang
+
+" ############
+" Git
+" ############
+Plugin 'tpope/vim-fugitive'                    " A Git wrapper so awesome, it should be illegal
+Plugin 'airblade/vim-gitgutter'                " Git diff showing side inline
+
+" ############
+" Major Utils
+" ############
+Plugin 'vim-test/vim-test'                     " Run your tests at the speed of thought
+Plugin 'tpope/vim-dispatch'                    " Asynchronous build and test dispatcher
+Plugin 'scrooloose/nerdtree.git'               " A tree explorer plugin for vim.
+Plugin 'ryanoasis/vim-devicons'                " Adds file type icons to Vim plugins such as: NERDTree
+Plugin 'junegunn/fzf.vim'                      " fzf vim
+
+" Minor Utils
+Plugin 'jacoborus/tender.vim'                  " ColorScheme
+Plugin 'bronson/vim-trailing-whitespace'       " 不要な空白(whitespace)に赤色を付ける
+
+" ############
+" vim-lsp
+" ############
+Plugin 'prabirshrestha/asyncomplete.vim'       " async completion in pure vim script for vim8 and neovim
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'   " Provide Language Server Protocol autocompletion source for asyncomplete.vim and vim-lsp
+Plugin 'prabirshrestha/vim-lsp'                " async language server protocol plugin for vim and neovim
+Plugin 'mattn/vim-lsp-settings'                " Auto configurations for Language Server for vim-lsp
+Plugin 'SirVer/ultisnips'                      " The ultimate snippet solution for Vim.
+Plugin 'honza/vim-snippets'                    " This repository contains snippets files for various programming languages.
+Plugin 'thomasfaingnaert/vim-lsp-snippets'     " Language Server Protocol snippets in vim using vim-lsp
+Plugin 'thomasfaingnaert/vim-lsp-ultisnips'    " Language Server Protocol snippets in vim using vim-lsp and UltiSnips
+Plugin 'hrsh7th/vim-vsnip'                     " Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
+Plugin 'hrsh7th/vim-vsnip-integ'               " vim-vsnip integrations to other plugins.
+
+" ############
+" Golang
+" ############
+Plugin 'mattn/vim-goimports'                   " goimports
+Plugin 'buoto/gotests-vim'                     " Vim plugin for https://github.com/cweill/gotests
+Plugin 'sebdah/vim-delve'                      " Neovim / Vim integration for Delve
+
+" ############
+" For Terraform
+" ############
+Plugin 'hashivim/vim-terraform' " Terraform
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,6 +77,108 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+ "------------------------------------------------------------
+" For LSP settings
+ "------------------------------------------------------------
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> <C-]> <plug>(lsp-definition)
+  nmap <buffer> <f2> <plug>(lsp-rename)
+  nmap <buffer> <Leader>d <plug>(lsp-type-definition)
+  nmap <buffer> <Leader>r <plug>(lsp-references)
+  nmap <buffer> <Leader>i <plug>(lsp-implementation)
+  inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+endfunction
+
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+" let g:asyncomplete_auto_popup = 1
+" let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+let g:lsp_text_edit_enabled = 1
+let g:lsp_preview_float = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_settings_filetype_go = ['gopls', 'golangci-lint-langserver']
+
+let g:lsp_settings = {}
+let g:lsp_settings['gopls'] = {
+  \  'workspace_config': {
+  \    'usePlaceholders': v:true,
+  \    'analyses': {
+  \      'fillstruct': v:true,
+  \    },
+  \  },
+  \  'initialization_options': {
+  \    'usePlaceholders': v:true,
+  \    'analyses': {
+  \      'fillstruct': v:true,
+  \    },
+  \  },
+  \}
+
+" For snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+set completeopt+=menuone
+
+ "------------------------------------------------------------
+ " fzf setting
+ "------------------------------------------------------------
+set rtp+=/usr/local/opt/fzf
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~50%' }
+command! FZFFileList call fzf#run({
+            \ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
+            \ 'sink': 'e'})
+" Files command with preview
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+nnoremap <C-p> :GFiles<CR>
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
  "------------------------------------------------------------
  " General preference
@@ -172,7 +307,6 @@ augroup END
  " softtabstop : タブ文字を入力した際にタブ文字の代わりに挿入されるホワイトスペースの量を設定する  shiftwidthと同じ値にすると良い
  " shiftwidth  : 「>>」等のコマンドや自動インデントの際に使う1レベル分のインデント量を設定する  tabstopと同じ値にすると良い
 
-
  "------------------------------------------------------------
  " Display
  "------------------------------------------------------------
@@ -197,7 +331,6 @@ augroup END
    call ZenkakuSpace()
  endif
 
-
  "------------------------------------------------------------
  " Complision
  "------------------------------------------------------------
@@ -215,7 +348,6 @@ augroup END
  " list:full    複数のマッチがあるときは、全てのマッチを羅列し、最初のマッチを補完する
  " list:longest 複数のマッチがあるときは、全てのマッチを羅列し、共通する最長の文字列までが補完される
 
-
  "------------------------------------------------------------
  " Search
  "------------------------------------------------------------
@@ -224,9 +356,6 @@ augroup END
  set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
  set hlsearch   " 検索語を強調表示
  set incsearch  " インクリメンタルサーチを有効化
-
-
-
 
  "------------------------------------------------------------
  " Key map
@@ -272,8 +401,7 @@ endif
  "------------------------------------------------------------
  set nostartofline " 移動コマンドを使ったとき、行頭に移動しない
 
-
- "------------------------------------------------------------
+ "------------------
  " Encoding
  "------------------------------------------------------------
  set ffs=unix,dos,mac   " 改行文字
@@ -340,35 +468,39 @@ function! s:GetHighlight(hi)
 endfunction
 """"""""""""""""""""""""""""""
 
+" vim-devicons " https://github.com/ryanoasis/vim-devicons/issues/198
+let g:airline_powerline_fonts = 1
 
-
- "------------------------------------------------------------
- " Plugin
- "------------------------------------------------------------
+"------------------------------------------------------------
+" Plugin
+"------------------------------------------------------------
  filetype plugin on
  nmap <F9> :TagbarToggle<CR>
  map <C-n> :NERDTreeToggle<CR>
 
- "------------------------------------------------------------
- " NeoBundle
- "------------------------------------------------------------
- " Note: Skip initialization for vim-tiny or vim-small.
- "
- let g:neocomplete#enable_at_startup = 1
+"------------------------------------------------------------
+" for vim-test
+"------------------------------------------------------------
+let test#strategy = "dispatch"
+let test#go#runner = 'gotest'
 
- if 0 | endif
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
- if has('vim_starting')
-   if &compatible
-     set nocompatible               " Be iMproved
-   endif
+function! DebugNearest()
+  let g:test#go#runner = 'delve'
+  TestNearest
+  unlet g:test#go#runner
+endfunction
+nmap <silent> t<C-d> :call DebugNearest()<CR>
 
-   " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
-
-
- "------------------------------------------------------------
- " vim-go
- "------------------------------------------------------------
- let g:go_fmt_command = "goimports"
+" popup window color
+" https://qiita.com/TatchNicolas/items/92c03df6ca82e7374469
+" number color: http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+" gui color name: http://fugal.net/vim/rgbtxt.html
+hi Pmenu ctermbg=8 ctermfg=1 guifg=blue3 guibg=gray
+hi PmenuSel ctermbg=13 ctermfg=1
+hi SignColumn guibg=RoyalBlue
