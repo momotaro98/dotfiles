@@ -7,8 +7,8 @@
     },
     {
         "key": "cmd+f",
-        "command": "scrollPageDown",
-        "when": "textInputFocus"
+        "command": "extension.vim_ctrl+f",
+        "when": "textInputFocus && vim.mode != 'Insert'"
     },
     {
         "key": "cmd+pagedown",
@@ -25,8 +25,8 @@
     },
     {
         "key": "cmd+b",
-        "command": "scrollPageUp",
-        "when": "textInputFocus"
+        "command": "extension.vim_ctrl+b",
+        "when": "textInputFocus && vim.mode != 'Insert'"
     },
     {
         "key": "cmd+pageup",
