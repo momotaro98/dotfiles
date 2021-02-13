@@ -6,5 +6,15 @@
     "window.clickThroughInactive": false,
     "textlint.nodePath": "",
     "textlint.configPath": "",
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "[shellscript]": {
+        "editor.tabSize": 2,
+        "files.eol": "\n"
+    },
+    "[python]": {
+        "editor.tabSize": 4,
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+    }
 }
