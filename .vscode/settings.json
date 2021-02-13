@@ -3,18 +3,43 @@
     "window.zoomLevel": 0,
     "go.useLanguageServer": true,
     "explorer.confirmDelete": false,
-    "window.clickThroughInactive": false,
-    "textlint.nodePath": "",
-    "textlint.configPath": "",
     "workbench.editor.enablePreview": false,
     "[shellscript]": {
         "editor.tabSize": 2,
         "files.eol": "\n"
     },
     "[python]": {
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
     "[javascript]": {
-        "editor.tabSize": 2,
-    }
+        "editor.tabSize": 2
+    },
+    "editor.multiCursorModifier": "ctrlCmd",
+    "vim.useCtrlKeys": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "commands": [
+                "redo"
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "redo"
+            ]
+        }
+    ]
 }

@@ -139,5 +139,41 @@
         "key": "cmd+[",
         "command": "extension.vim_escape",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+k h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "cmd+k k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "cmd+k j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "cmd+k l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+down",
+        "command": "-editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+up",
+        "command": "-editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]

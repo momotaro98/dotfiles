@@ -5,5 +5,4 @@ ms-python.python
 ms-toolsai.jupyter
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
-taichi.vscode-textlint
 vscodevim.vim
