@@ -15,8 +15,34 @@
         "editor.tabSize": 2
     },
     "editor.multiCursorModifier": "ctrlCmd",
+    "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
+    "vim.searchHighlightColor": "rgba(255, 235, 60, 0.4)",
+    "vim.easymotion": true,
+    "vim.easymotionKeys": "sdfghjkl",
+    "vim.leader": ",",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
         {
             "before": [
                 "u"
@@ -39,6 +65,26 @@
             ],
             "commands": [
                 "redo"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "bookmarks.list"
             ]
         }
     ]
