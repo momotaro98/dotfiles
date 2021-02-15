@@ -37,6 +37,15 @@
         {
             "before": [
                 "<leader>",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
                 "d"
             ],
             "after": [
