@@ -1,9 +1,10 @@
 {
     "workbench.colorTheme": "Default Dark+",
+    "workbench.editor.enablePreview": false,
     "window.zoomLevel": 0,
+    "git.autofetch": true,
     "go.useLanguageServer": true,
     "explorer.confirmDelete": false,
-    "workbench.editor.enablePreview": false,
     "[shellscript]": {
         "editor.tabSize": 2,
         "files.eol": "\n"
