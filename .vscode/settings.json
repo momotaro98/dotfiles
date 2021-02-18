@@ -46,6 +46,15 @@
         {
             "before": [
                 "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
                 "d"
             ],
             "after": [
