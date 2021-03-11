@@ -1,7 +1,6 @@
 {
     "workbench.colorTheme": "Default Dark+",
     "workbench.editor.enablePreview": false,
-    "window.zoomLevel": 0,
     "git.autofetch": true,
     "go.useLanguageServer": true,
     "explorer.confirmDelete": false,
@@ -91,7 +90,7 @@
         {
             "before": [
                 "<leader>",
-                "m"
+                "t"
             ],
             "commands": [
                 "bookmarks.toggle"
@@ -100,11 +99,41 @@
         {
             "before": [
                 "<leader>",
-                "b"
+                "l"
             ],
             "commands": [
-                "bookmarks.list"
+                "bookmarks.listFromAllFiles"
             ]
         }
-    ]
+    ],
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "yaml.validate": false
 }
