@@ -67,6 +67,13 @@ alias panicparse='$GOPATH/bin/pp'
 # hub alias
 function git(){hub "$@"}
 
+# custom utils
+## Amazon.co.jp url convert
+## how it works
+### Input: https://www.amazon.co.jp/%E3%83%98%E3%82%A4%E3%82%B3%E3%83%BC-No-16-%E3%82%AF%E3%83%A9%E3%83%95%E3%83%88-19-5x12-5x40cm-100%E6%9E%9A/dp/B00HQ97SAS?pd_rd_w=TdqE1&pf_rd_p=84f28865-d58b-4753-98c0-708f78a0f1fe&pf_rd_r=QAW3MM8HRTDHFAGDT5DX&pd_rd_r=49750457-eb10-47f7-b0ca-fddb8d5c5537&pd_rd_wg=TnFVm&pd_rd_i=B00HQ97SAS&psc=1&ref_=pd_bap_d_rp_11_t
+### Output: https://www.amazon.co.jp/dp/B00HQ97SAS
+alias amac="pbpaste | awk -F 'dp' '{print \$2}' | awk -F '[/\?]' '{ print \"https://www.amazon.co.jp/dp/\"\$2}' | tee >( pbcopy )"
+
 # For direnv
 export EDITOR=vim
 eval "$(direnv hook zsh)"
