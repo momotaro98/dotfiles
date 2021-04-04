@@ -14,6 +14,9 @@
     "[javascript]": {
         "editor.tabSize": 2
     },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
     "editor.multiCursorModifier": "ctrlCmd",
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
@@ -135,5 +138,7 @@
         "!Split",
         "!Split sequence"
     ],
-    "yaml.validate": false
+    "yaml.validate": false,
+    "go.toolsManagement.autoUpdate": false,
+    "diffEditor.ignoreTrimWhitespace": true
 }
