@@ -28,8 +28,7 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [ghq]
-	root = ~/.ghq
-	root = ~/go/src # Replace your $GOPATH/src
+	root = ~/workspace
 [commit]
 	template = ~/.gitmessage.txt # commit template texts
 [secrets]
