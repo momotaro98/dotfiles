@@ -40,3 +40,5 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	templatedir = ~/.git_templates/git-secrets
+[pull]
+	rebase = false
