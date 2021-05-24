@@ -15,7 +15,7 @@ ln -s "${SCRIPT_DIR}/keybindings.json" "${VSCODE_SETTING_DIR}/keybindings.json"
 for filename in snippets/*.json; do
   # $filename is like "snippets/python.json"
   rm "${VSCODE_SETTING_DIR}/${filename}"
-  ln -s "${filename}" "${VSCODE_SETTING_DIR}/${filename}"
+  ln -s "${SCRIPT_DIR}/${filename}" "${VSCODE_SETTING_DIR}/${filename}"
 done
 
 echo "Finished symbolic link setting"

@@ -8,10 +8,12 @@ jebbs.plantuml
 justusadam.language-haskell
 kddejong.vscode-cfn-lint
 ms-python.python
+ms-python.vscode-pylance
 ms-toolsai.jupyter
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 oderwat.indent-rainbow
+redhat.vscode-commons
 redhat.vscode-yaml
 rust-lang.rust
 vscodevim.vim

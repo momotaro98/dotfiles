@@ -140,5 +140,6 @@
     ],
     "yaml.validate": false,
     "go.toolsManagement.autoUpdate": false,
-    "diffEditor.ignoreTrimWhitespace": true
+    "diffEditor.ignoreTrimWhitespace": true,
+    "redhat.telemetry.enabled": true
 }
